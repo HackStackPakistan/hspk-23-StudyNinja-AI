@@ -19,9 +19,4 @@ Hello, innovators! We are thrilled that you've decided to be a part of Hackstack
 
 Should you face any issues or have questions, don't hesitate to reach out. Our team and mentors are here to guide and assist you.
 
-## Wrapping Up 🎉
 
-Remember, it's not just about winning; it's about learning, collaboration, and turning your innovative ideas into reality. Best of luck, and may the best projects shine!
-
-With warm regards,  
-The Hackstack Pakistan 2023 Team
