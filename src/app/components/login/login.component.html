@@ -3,7 +3,7 @@
 
     <h1>Login</h1>
 
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()"  >
     
         <mat-form-field>
             <input matInput placeholder="Email Address" formControlName="email" type="email">
@@ -23,9 +23,8 @@
         </mat-form-field>
 
         <div class="center margin-top">
-            <button mat-raised-button color="primary" type="submit">Login</button>
-
-        </div>
+            <button mat-raised-button class="green-button" type="submit">Login</button>
+          </div>
         <span class="center margin-top">New to  UniMentor? <a routerLink="sign-up" class="sign-up-link"> Sign Up!</a></span>
     </form>
     

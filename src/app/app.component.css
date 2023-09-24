@@ -10,3 +10,8 @@ mat-toolbar {
     border-radius: 100%;
     margin-right: 8px;
   }
+  .green-bg {
+    background-color: green;
+    color: white; 
+  }
+  
