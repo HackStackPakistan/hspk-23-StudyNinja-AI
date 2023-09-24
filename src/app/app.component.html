@@ -5,7 +5,7 @@
       <mat-icon>logout</mat-icon>
       Logout
     </button>
-    <!-- <button mat-button [matMenuTriggerFor]="userMenu">
+    <button mat-button [matMenuTriggerFor]="userMenu">
       <img
         width="30"
         height="30"
@@ -14,7 +14,7 @@
       />
       {{ user.displayName }}
       <mat-icon>expand_more</mat-icon>
-    </button> -->
+    </button>
     
   </ng-container>
   <ng-template #loginButton>
@@ -28,3 +28,14 @@
 <div class="content">
   <router-outlet></router-outlet>
 </div>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink="/profile">
+    <mat-icon>account_circle</mat-icon>
+    Profile
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</mat-menu>

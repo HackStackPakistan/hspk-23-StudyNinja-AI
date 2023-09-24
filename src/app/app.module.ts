@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 //Forms module
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -40,6 +41,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatMenuModule,
     MatInputModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
