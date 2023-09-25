@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { ChattestingComponent } from './components/chattesting/chattesting.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     LandingpageComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ChattestingComponent
   ],
   imports: [
     BrowserModule,
