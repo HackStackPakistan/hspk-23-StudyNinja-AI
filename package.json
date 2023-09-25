@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/material": "^5.14.10",
     "@ngneat/hot-toast": "^6.0.0",
     "@ngneat/overview": "^5.1.0",
     "firebase": "^10.4.0",

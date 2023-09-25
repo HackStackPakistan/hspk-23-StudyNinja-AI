@@ -4,6 +4,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
+
 import {
   canActivate,
   redirectLoggedInTo,
@@ -11,6 +12,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { ChattestingComponent } from './components/chattesting/chattesting.component';
 
+import { ChatComponent } from './components/chat/chat.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -41,7 +43,9 @@ const routes: Routes = [
     path: 'chatgpt',
     component: ChattestingComponent,
   },
-  
+
+  { path: 'chat', component: ChatComponent },
+  { path: '', redirectTo: '/chat', pathMatch: 'full' },
 ];
 
 @NgModule({

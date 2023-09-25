@@ -1,0 +1,223 @@
+html{
+  scroll-behavior: smooth;
+}
+
+aside {
+  width: 30%;
+  padding-left: 15px;
+  margin-left: 15px;
+  float: right;
+  font-style: italic;
+  background-color: lightgray;
+}
+
+.bg-black{
+  background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+
+}
+.text-white{
+    color:  white;
+}
+.text-black{
+    color:  black;
+}
+.bg-primary-orange{
+  background-color: #fec503;
+}
+.primary-orange{
+  color: #fec503;
+}
+.org-btn{
+  border: 1px solid #fec503;
+  color: #fec503;
+}
+.org-btn:hover{
+  background-color: #fec503;
+  color: white;
+}
+
+.light-grey{
+  color:#6c757d;
+}
+
+.bg-light-grey{
+  background-color: #6c757d;
+}
+
+.social-buttons-circle-dark-grey{
+  background:  #1a1d20;
+}
+
+/* img css */
+
+/* .testimonals-container img{
+  width:300px;
+  
+} */
+
+/* hero */
+.center{
+  text-align: center;
+}
+
+/*  Card hover */
+.move-up:hover{
+    background-color: #fec503;
+  color: white;
+    transition: all .5s;
+    transform : translateY(-10px);
+}
+
+.ng-mrg-t{
+  margin-top: -50px;
+}
+
+
+/* Footer code */
+.foot{
+/*   position: relative; */
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #1a1d20;
+   color: white;
+   text-align: center;
+   top: 75px;
+}
+
+a {
+  color: #6c757d ;
+}
+a:hover {
+  color: #fec503;
+  text-decoration: none;
+}
+
+::selection {
+  background: #fec503;
+  text-shadow: none;
+}
+.footer-column {
+  text-align: center;
+}
+.nav-link {
+      padding: 0.1rem 0;
+    }
+span.nav-link {
+      color: #6c757d;
+    }
+span.nav-link:hover {
+      color: #fec503;
+    }
+span.footer-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .fas {
+      margin-right: 0.5rem;
+    }
+
+footer {
+  padding: 2rem 0;
+  background-color: #212529;
+  
+}
+
+
+ul.social-buttons {
+  margin-bottom: 0;
+}
+
+ul.social-buttons li a:active,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:hover {
+  background-color: #fec503;
+}
+
+ul.social-buttons li a {
+  font-size: 20px;
+  line-height: 40px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #fff;
+  border-radius: 100%;
+  outline: 0;
+  background-color:  #1a1d20;
+}
+
+footer .quick-links {
+  font-size: 90%;
+  line-height: 40px;
+  margin-bottom: 0;
+  text-transform: none;
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.copyright {
+  color: white;
+}
+
+.fa-ellipsis-h {
+  color: white;
+  padding: 2rem 0;
+}
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  font-size: 24px;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+      border-right-color: transparent;
+  }
+  50% {
+      border-right-color: black;
+  }
+}
+h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #333;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  animation: typing 5s steps(40), blink-caret 1s infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+      border-color: transparent;
+  }
+  50% {
+      border-color: #333;
+  }
+}
