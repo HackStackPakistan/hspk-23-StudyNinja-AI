@@ -11,6 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+
+
 //Forms module
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -25,6 +32,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ChattestingComponent } from './components/chattesting/chattesting.component';
+import { TypewriterComponent } from './components/chattesting/typewriter/typewriter.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +43,8 @@ import { ChattestingComponent } from './components/chattesting/chattesting.compo
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    ChattestingComponent
+    ChattestingComponent,
+    TypewriterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,9 @@ import { ChattestingComponent } from './components/chattesting/chattesting.compo
     MatFormFieldModule,
     MatMenuModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

@@ -9,6 +9,7 @@ import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
+import { ChattestingComponent } from './components/chattesting/chattesting.component';
 
 
 
@@ -35,6 +36,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'chatgpt',
+    component: ChattestingComponent,
   },
   
 ];

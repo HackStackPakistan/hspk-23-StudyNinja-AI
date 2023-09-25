@@ -1,0 +1,16 @@
+
+
+.blinking-cursor {
+    display: inline-block;
+    width: 5px;
+    height: 1em;
+    background-color: black;
+    animation: blink-animation 1s step-end infinite;
+  }
+  
+  @keyframes blink-animation {
+    50% {
+      opacity: 0;
+    }
+  }
+  

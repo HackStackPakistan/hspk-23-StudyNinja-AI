@@ -9,3 +9,8 @@ export const environment = {
     measurementId: 'G-FRPGZVS47H',
   },
 };
+
+export const environment1 = {
+  production: true,
+  BASE_URL:'https://general-runtime.voiceflow.com/state/user/1234/interact?logs=0'
+};

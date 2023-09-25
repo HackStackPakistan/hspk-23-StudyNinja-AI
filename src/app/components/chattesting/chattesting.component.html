@@ -1,1 +1,79 @@
-<p>chattesting works!</p>
+<div class="startdiv">
+    <button (click)="ChatStart()" mat-raised-button color="primary">Start Chat</button>
+    <br>
+    <br>
+    <br>
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+    <div>
+      <!--  {{ data }} Display the 'data' variable value -->
+  
+  
+  
+      <!-- 
+      <div *ngFor="let button of Buttons" class="message received">
+        <p>{{ button.name }}</p>
+      </div> -->
+    </div>
+  </div>
+  
+    <div  #chatboxContainer  class="chatbox chat-container">
+      <br>
+      <br>
+      <br>
+      <div *ngIf="chatboxvisible">
+        <div class="chatbox row">
+          <div class="chat col" *ngFor="let item of ConversationArr ">
+            <!-- AI reponse -->
+            <div class="messagecame">
+              <div>
+                <div *ngIf="item.type == 'system'">
+                  <!-- AI text -->
+                  <!-- <div *ngIf="item?.contenttype == 'text'" class="message received">
+                    <p>{{ item.payload?.message}}</p>
+                  </div> -->  
+                  <app-typewriter *ngIf="item.payload?.message?.length >  1" class="message received" [text]="item.payload?.message" [isTyping]="isTypingg(true)"></app-typewriter>
+                 
+                  <div   class="buttondiv">
+                    <!-- AI choice -->
+                    <div  *ngIf="item.contenttype == 'choice'" class="buttondiv">
+                      <div (click)="ButtonClick(buttonss)" class="button" *ngFor="let buttonss of latestbuttonarr">
+                        <button color="primary" mat-raised-button>
+                          {{buttonss.name}}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div *ngIf="data1[1]?.type == 'choice'" class="buttondiv">
+                <div (click)="ButtonClick( buttonss   )" class="button" *ngFor="let buttonss of Buttons">
+                  <button   color="primary" mat-raised-button >
+                  {{buttonss.name}}
+                  </button>
+                  
+                </div>
+              </div> -->
+            </div>
+            <!-- USER reponse -->
+            <div class="">
+              <div *ngIf="item.type === 'user'">
+                <!-- <div *ngIf="buttonname != null" class="message sent col"> 
+                        <p>{{ buttonname }}</p>
+                      </div> -->
+                <div *ngIf="item.contenttype === 'text'" class="message sent col">
+                  <p>{{ item.payload}}</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngFor="let buttons of data[0]?.payload?.buttons" class="message received">
+                <p>
+                  {{buttons.name}}
+                </p>
+              </divdsf> -->
+          </div>
+          <div class="user-input">
+            <!-- <input type="text" placeholder="Type your message..." [(ngModel)]="userresponse"> -->
+            <button (click)="UserResponse(userresponse)">Send</button>
+          </div>
+        </div>  
+      </div>
