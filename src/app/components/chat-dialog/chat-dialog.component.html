@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Create New Chat</h2>
+<mat-dialog-content>
+  <!-- Autocomplete dropdown -->
+  <mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option value="option1">Sir Syed University</mat-option>
+      <mat-option value="option2">DHA Suffa University</mat-option>
+      <mat-option value="option3">Ned University</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- Select button -->
+  <button mat-button (click)="selectUser()">Select</button>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

@@ -10,5 +10,20 @@
   <button type="button" mat-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
+  <div class="example-sidenav-content">
 
+    <div class="example-sidenav-content">
+    <div class="suggestion-questions">
+      <div *ngFor="let question of suggestedQuestions" class="suggested-question">
+        <button mat-button (click)="selectQuestion(question)">{{ question }}</button>
+      </div>
+    </div>
+    <div class="chat-input">
+      <mat-form-field>
+        <input matInput placeholder="Type your message">
+      </mat-form-field>
+      <button mat-button (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+    </div>
+  </div>
+  </div>
 </mat-drawer-container>
