@@ -7,13 +7,17 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./chat-dialog.component.css']
 })
 export class ChatDialogComponent {
+  selectedOption: string | null = null;
 
   constructor(private dialogRef: MatDialogRef<ChatDialogComponent>) {}
+
   selectUser() {
-    this.closeDialog();
+    if (this.selectedOption) {
+      this.dialogRef.close(this.selectedOption);
+    }
   }
 
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogRef.close(null);
   }
 }

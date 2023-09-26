@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
@@ -76,7 +77,7 @@ import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.compon
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     HotToastModule.forRoot(),
-
+    FormsModule,
     MatSidenavModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,

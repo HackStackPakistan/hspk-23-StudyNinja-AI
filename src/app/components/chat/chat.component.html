@@ -1,29 +1,51 @@
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button mat-raised-button (click)="openChatDialog()">
-      New Chat
+    <button mat-raised-button (click)="openChatDialog()" color="primary">
+      <mat-icon>chat</mat-icon> New Chat
     </button>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <div class="previous-chats">
+      <div *ngFor="let chat of previousChats" class="previous-chat">
+        <button mat-button (click)="loadChat(chat)">
+          <mat-icon>chat</mat-icon> {{ chat }}
+        </button>
+      </div>
+    </div>
   </mat-drawer>
-  <button type="button" mat-button (click)="drawer.toggle()">
+  <button type="button" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <div class="example-sidenav-content">
-
-    <div class="example-sidenav-content">
-    <div class="suggestion-questions">
-      <div *ngFor="let question of suggestedQuestions" class="suggested-question">
-        <button mat-button (click)="selectQuestion(question)">{{ question }}</button>
+    <div *ngIf="selectedRecipient" class="chat-header">
+      Chat with: {{ selectedRecipient }} Mentor
+    </div>
+    <div class="chat-history">
+      <div *ngIf="selectedRecipient">
+        <div *ngFor="let message of getChatMessages(selectedRecipient); let i = index" class="chat-message">
+          <div class="message-container" [ngClass]="{ 'user-message': message.sender === 'User', 'bot-message': message.sender === 'Bot' }">
+            <div class="message-content">{{ message.message }}</div>
+          </div>
+          <div class="message-actions" *ngIf="message.sender === 'User'">
+            <button mat-icon-button class="edit-button" (click)="editMessage(i)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="delete-button" (click)="deleteMessage(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!selectedRecipient" class="no-chat-selected">
+        Select a chat or start a new one.
       </div>
     </div>
+
     <div class="chat-input">
-      <mat-form-field>
-        <input matInput placeholder="Type your message">
+      <mat-form-field class="flex-grow">
+        <input [(ngModel)]="message" matInput placeholder="Type your message" [disabled]="!selectedRecipient">
       </mat-form-field>
-      <button mat-button (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+      <button mat-icon-button (click)="sendMessage()" [disabled]="!selectedRecipient">
+        <mat-icon>send</mat-icon>
+      </button>
     </div>
-  </div>
   </div>
 </mat-drawer-container>
