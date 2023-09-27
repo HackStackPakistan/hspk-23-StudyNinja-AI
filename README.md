@@ -16,6 +16,17 @@ Welcome to UniMentor, your intelligent companion for all things university-relat
 
 UniMentor leverages cutting-edge AI technology to provide you with a seamless university exploration experience. Whether you're a prospective student, a parent, or simply curious about higher education options, UniMentor is your reliable companion.
 
+## Technologies Used
+Backend:  Node.js , OpenAI GPT-3.5 Integration
+
+Frontend: Angular, Angular Material UI with Tailwind CSS
+
+Database: Firebase Database
+
+Authentication: Firebase Authentication
+
+Installation
+
 ## Getting Started
 
 To start using UniMentor, simply [visit our website](https://www.unimentor.ai) or download our mobile app from your favorite app store. Create an account, and UniMentor will guide you through the rest.
