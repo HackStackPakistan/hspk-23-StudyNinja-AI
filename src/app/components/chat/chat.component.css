@@ -1,6 +1,6 @@
+/* Add these styles to your CSS */
+
 .example-container {
-  width: 100%;
-  height: 650px;
   display: flex;
   flex-direction: column;
 }
@@ -9,56 +9,45 @@
   min-width: 280px;
   max-width: 400px;
   padding: 16px;
+  background-color: #ffffff;
+  color: white;
 }
 
 .example-sidenav-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   padding: 16px;
-  justify-content: flex-end;
+  background-color: #f5f5f5;
+  overflow: auto;
 }
 
-.example-sidenav-content .chat-header {
+.chat-header {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 16px;
+  color: #333;
 }
 
-.example-sidenav button[mat-raised-button] {
-  display: flex;
-  align-items: center;
-  color: white;
-  background-color: #007bff;
+.previous-chats {
+  margin-top: 16px;
 }
 
-.example-sidenav button[mat-raised-button] mat-icon {
-  margin-right: 8px;
-}
-
-.previous-chats .mat-icon-button {
-  color: #007bff;
-}
-
-.previous-chats .edit-button {
-  margin-right: 8px;
-}
-
-.chat-header mat-icon,
-.previous-chat mat-icon {
-  margin-right: 8px;
+.previous-chat {
+  margin-bottom: 8px;
 }
 
 .chat-history {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column-reverse;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   padding: 8px;
+  background-color: #f5f5f5;
 }
 
 .chat-message {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -66,28 +55,28 @@
 .message-container {
   display: inline-block;
   padding: 8px 12px;
-  border-radius: 16px;
+  border-radius: 8px;
   max-width: 70%;
+  word-wrap: break-word;
 }
 
 .user-message {
+  align-self: flex-end;
   background-color: #007bff;
   color: white;
-  align-self: flex-end;
 }
 
 .bot-message {
-  background-color: #eee;
-  color: #333;
+  align-self: flex-start;
+  background-color: #333;
+  color: white;
 }
 
 .message-content {
   font-size: 16px;
-  word-wrap: break-word;
 }
 
 .message-actions {
-  margin-top: 4px;
   display: flex;
   justify-content: flex-end;
   gap: 4px;
@@ -96,21 +85,17 @@
 .chat-input {
   display: flex;
   align-items: center;
-  margin-top: 16px;
+  justify-content: space-between;
+  padding: 8px;
+  border-top: 1px solid #ccc;
 }
-
+.chat-button {
+  width: 100%;
+  height: 40px;
+}
 mat-form-field {
   flex: 1;
   margin-right: 16px;
-  textarea {
-    resize: none;
-  }
-}
-
-button[mat-icon-button] {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 }
 
 .no-chat-selected {
@@ -119,11 +104,29 @@ button[mat-icon-button] {
   margin-top: 32px;
 }
 
-@media screen and (max-width: 768px) {
-  .example-container {
-    height: 100%;
-  }
-  .example-sidenav {
-    min-width: 0;
-  }
+.flex-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px;
+  height: 77vh;
+}
+
+.flex-content {
+  max-width: 80%;
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.heading{
+  display: flex;
+    justify-content: center;
+    color: gray;
+}
+.button-container {
+  display: flex;
+  gap: 16px;
 }

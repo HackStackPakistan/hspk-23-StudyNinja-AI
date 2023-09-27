@@ -59,7 +59,7 @@ export class ChatComponent implements OnInit{
     //   }
     // }, durationInMilliseconds);
 
-   
+
     this.firebaseservice.getAllUserschats().subscribe(
       (response: any) => {
         for (let i = 0; i < response.length; i++) {
@@ -75,7 +75,7 @@ export class ChatComponent implements OnInit{
     // var apiresponse:any = this.chattest.PostData();
     // this.data1= apiresponse?.body;
 
-    
+
     // for (let i = 0; i <  apiresponse?.bodydata1.length; i++) {
 
     //   var newMessage = { sender: 'system', message:this.data1[i].payload };
@@ -113,8 +113,8 @@ export class ChatComponent implements OnInit{
 
   addToPreviousChats(chatName: string) {
     this.previousChats.push(chatName);
-   
-    
+
+
   }
 
   addchattodatabase(chatName: string){
@@ -149,7 +149,6 @@ export class ChatComponent implements OnInit{
 
   getuserchats(){
     console.log("sdfsd")
-
-    
   }
+
 }
