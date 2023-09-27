@@ -14,7 +14,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
-
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -22,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 //Forms module
 import { ReactiveFormsModule } from '@angular/forms';
 //Components
@@ -81,7 +81,8 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
     MatAutocompleteModule,
     MatDialogModule,
     MatSelectModule,
-  
+    MatCardModule,
+    MatListModule,
   ],
   providers: [HttpClientModule,AngularFireModule,AngularFirestoreModule,],
   bootstrap: [AppComponent]
