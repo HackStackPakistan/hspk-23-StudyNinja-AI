@@ -1,51 +1,61 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button mat-raised-button (click)="openChatDialog()" color="primary">
-      <mat-icon>chat</mat-icon> New Chat
-    </button>
-    <div class="previous-chats" >
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+    <div class="button-container">
+      <button mat-stroked-button (click)="openChatDialog()" >
+        <mat-icon>add</mat-icon> New Chat
+      </button>
+      <button type="button" mat-stroked-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <div class="previous-chats">
       <div *ngFor="let chat of previousChats" class="previous-chat">
-        <button mat-button (click)="loadChat(chat)">
+        <button mat-button class="chat-button" (click)="loadChat(chat)">
           <mat-icon>chat</mat-icon> {{ chat }}
         </button>
       </div>
     </div>
+
   </mat-drawer>
-  <button type="button" mat-icon-button (click)="drawer.toggle()">
+  <button *ngIf="!drawer.opened" type="button" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <div class="example-sidenav-content">
-    <div *ngIf="selectedRecipient" class="chat-header">
-      Chat with: {{ selectedRecipient }} Mentor
-    </div>
-    <div class="chat-history">
-      <div *ngIf="selectedRecipient">
-        <div *ngFor="let message of getChatMessages(selectedRecipient); let i = index" class="chat-message">
-          <div class="message-container" [ngClass]="{ 'user-message': message.sender === 'User', 'bot-message': message.sender === 'Bot' }">
-            <div class="message-content">{{ message.message }}</div>
-          </div>
-          <div class="message-actions" *ngIf="message.sender === 'User'">
-            <button mat-icon-button class="edit-button" (click)="editMessage(i)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button class="delete-button" (click)="deleteMessage(i)">
-              <mat-icon>delete</mat-icon>
-            </button>
+  <div class="heading" >
+    <h2>Uni-Mentor</h2>
+  </div>
+
+  <div class="flex-container">
+    <div class="flex-content">
+      <div class="chat-header" *ngIf="selectedRecipient">
+        {{ selectedRecipient }} Mentor
+      </div>
+      <mat-card class="chat-history">
+        <div *ngIf="selectedRecipient">
+          <div *ngFor="let message of getChatMessages(selectedRecipient); let i = index" class="chat-message" [ngClass]="{'user-message': message.sender === 'User', 'bot-message': message.sender === 'Bot'}">
+            <div class="message-container">
+              {{ message.message }}
+            </div>
+            <hr/>
+            <div class="message-actions" *ngIf="message.sender === 'User'">
+              <button mat-icon-button class="edit-button" (click)="editMessage(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
+        <h6 *ngIf="!selectedRecipient" class="no-chat-selected">
+          Select a chat or start a new one.
+        </h6>
+      </mat-card>
+      <div class="chat-input">
+        <mat-form-field class="flex-grow">
+          <input [(ngModel)]="message" matInput placeholder="Type your message" [disabled]="!selectedRecipient">
+        </mat-form-field>
+        <button mat-mini-fab (click)="sendMessage()" color="accent" [disabled]="!selectedRecipient">
+          <mat-icon>send</mat-icon>
+        </button>
       </div>
-      <div *ngIf="!selectedRecipient" class="no-chat-selected">
-        Select a chat or start a new one.
-      </div>
-    </div>
-
-    <div class="chat-input">
-      <mat-form-field class="flex-grow">
-        <input [(ngModel)]="message" matInput placeholder="Type your message" [disabled]="!selectedRecipient">
-      </mat-form-field>
-      <button mat-icon-button (click)="sendMessage()" [disabled]="!selectedRecipient">
-        <mat-icon>send</mat-icon>
-      </button>
     </div>
   </div>
 </mat-drawer-container>
