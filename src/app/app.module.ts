@@ -19,34 +19,28 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 //Forms module
 import { ReactiveFormsModule } from '@angular/forms';
-
 //Components
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HotToastModule } from '@ngneat/hot-toast';
-
 import { ChattestingComponent } from './components/chattesting/chattesting.component';
 import { TypewriterComponent } from './components/chattesting/typewriter/typewriter.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 
 @NgModule({
   declarations: [
@@ -62,6 +56,7 @@ import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.compon
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatToolbarModule,
@@ -73,6 +68,9 @@ import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.compon
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
+    // // AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -82,9 +80,10 @@ import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.compon
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+  
   ],
-  providers: [],
+  providers: [HttpClientModule,AngularFireModule,AngularFirestoreModule,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

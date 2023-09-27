@@ -91,10 +91,7 @@ export class ChattestingComponent {
       if (this.Isspinnerclose == true){
         console.log("chat working");
         this.chatboxvisible = true;
-  
-        
       }
-  
     }, durationInMilliseconds);
 
    
@@ -165,11 +162,9 @@ Getdata() {
  PostData(){
   this.apiService.postdata().subscribe(
     response => {
-      console.log("geting data");
 
       this.data1= response?.body;
      this.data1length = this.data1?.length;
-     console.log(this.data1length);
 
       for (let i = 0; i <  this.data1length; i++) {
 
@@ -191,14 +186,13 @@ Getdata() {
       }
 
 
-      console.log("conversation array");
-      console.log(this.ConversationArr);
 
       if (response?.body?.length > 1) {
         this.Buttons =  this.data1[1].payload.buttons; // Extract 'buttons' from the second item in the array
-        console.log(this.Buttons);
         // console.log(response[1].payload.buttons);
       }
+
+      return response?.body;
     })
     // ,
     // (error) => {

@@ -3,7 +3,7 @@
     <button mat-raised-button (click)="openChatDialog()" color="primary">
       <mat-icon>chat</mat-icon> New Chat
     </button>
-    <div class="previous-chats">
+    <div class="previous-chats" >
       <div *ngFor="let chat of previousChats" class="previous-chat">
         <button mat-button (click)="loadChat(chat)">
           <mat-icon>chat</mat-icon> {{ chat }}

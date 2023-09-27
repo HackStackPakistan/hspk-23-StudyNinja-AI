@@ -2,17 +2,24 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/com
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment1 as env } from 'src/environments/environment';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiserviceService {
+export class ApiserviceService {  
+  data: any;
 
   
-  private apiurl = 'https://general-runtime.voiceflow.com/state/user/1234/interact?logs=off';
+  private apiurl = 'https://general-runtime.voiceflow.com/state/user/12345/interact?logs=off';
 
-  constructor(private http:HttpClient) { }
-  apikey:any = 'VF.DM.64c8eeb379fc860007badb7e.TKqa1sxomCjhxXE1';
+  constructor(private http:HttpClient
+    ,private db: AngularFirestore
+    ) {  }
+
+  apikey:any = 'VF.DM.64c8ee4679fc860007badb7a.Ce4o2LSwhEGKOtCd'; //unimentor api
   // apikey:any = 'apikey';
   userinput:any = 'hi i have some questoins';
   buttonpath:string= "";
@@ -107,7 +114,7 @@ this.buttonpath =  resp;
 
   // }
   postdata(): Observable<any> {
-    const rawData = { action: { type: 'launch' } }; // JSON object
+    const rawData = { action: { type: 'launch' } }; 
 
     let modifiedReq = new HttpRequest<any>(
       'POST',
@@ -119,7 +126,6 @@ this.buttonpath =  resp;
           'Authorization': this.apikey,
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          // Add any other headers you need
         }),
 //        params: new HttpParams().set('key', this.apikey)
       }
@@ -171,5 +177,11 @@ this.buttonpath =  resp;
       throw error;
     }
   }
+
+ 
+
+
+   
+
 }
 

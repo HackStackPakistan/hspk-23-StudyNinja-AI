@@ -11,6 +11,6 @@ export const environment = {
 };
 
 export const environment1 = {
-  production: true,
-  BASE_URL:'https://general-runtime.voiceflow.com/state/user/1234/interact?logs=0'
+  production: false,
+  BASE_URL:'https://general-runtime.voiceflow.com/state/user/12345/interact'
 };

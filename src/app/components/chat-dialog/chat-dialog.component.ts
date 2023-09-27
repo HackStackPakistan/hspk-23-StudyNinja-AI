@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ChatDialogComponent {
   selectedOption: string | null = null;
 
+
   constructor(private dialogRef: MatDialogRef<ChatDialogComponent>) {}
 
   selectUser() {
