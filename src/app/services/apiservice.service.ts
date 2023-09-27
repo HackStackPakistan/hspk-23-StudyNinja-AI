@@ -10,89 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root'
 })
 export class ApiserviceService {  
-  data: any;
-
   
-  private apiurl = 'https://general-runtime.voiceflow.com/state/user/12345/interact?logs=off';
-
-  constructor(private http:HttpClient
-    ,private db: AngularFirestore
-    ) {  }
-
-  apikey:any = 'VF.DM.64c8ee4679fc860007badb7a.Ce4o2LSwhEGKOtCd'; //unimentor api
-  // apikey:any = 'apikey';
-  userinput:any = 'hi i have some questoins';
-  buttonpath:string= "";
-
-  httpoptions = {
-    headers: new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': this.apikey,
-      'Host':'general-runtime.voiceflow.com',
-      'Content-Length': 96
-    })
-  };
-
-  httpbodyGET = {
-    body: JSON.stringify({
-      action: {
-        type: 'launch',
-        payload: this.userinput
-      },
-      config: {
-        tts: false,
-        stripSSML: true,
-        stopAll: true,
-        excludeTypes: ['block', 'debug', 'flow']
-      }
-    })
-  }
-
-  httpbodyPost = {
-    body: JSON.stringify({
-      action: {
-        type: 'launch',
-      }
-      // ,
-      // config: {
-      //   tts: false,
-      //   stripSSML: true,
-      //   stopAll: true,
-      //   excludeTypes: ['block', 'debug', 'flow']
-      // }
-    })
-  }
-  // httpbodyresponse = {
-  //   body: JSON.stringify({
-  //     action: {
-  //       type: "path-pe1wo39mf",
-  //       payload: {}
-  //     },
-  //     config: {
-  //       tts: false,
-  //       stripSSML: true,
-  //       stopAll: true,
-  //       excludeTypes: ['block', 'debug', 'flow']
-  //     }
-  //   })
-  // }
-  
-
-
-userrespomne(resp:string){
-console.log(resp);
-this.buttonpath =  resp;
-}
-
-
-  getData ():Observable<any>{
-  return this.http.get<any>(this.apiurl , this.httpoptions).pipe(map( data => {
-    console.log(data);
-    return data;
-  }));
-  }
-
   // postdata():Observable<any>{
 
   //   // return this.http.post<any>(this.apiurl, this.httpbodyPost,this.httpoptions).pipe(map( data => {
@@ -178,7 +96,25 @@ this.buttonpath =  resp;
     }
   }
 
- 
+   //firebase service
+
+   getAllUserschats() {
+    return this.db.collection('userchathistory').valueChanges();
+   }
+
+   Adduserchats( userid:string,chattitle:string, _ChathistoryID:string){
+    this.db.collection("userchathistory").add({
+      ChatTitle: chattitle,
+      UserID: userid,
+      ChathistoryID: _ChathistoryID
+    })
+    .then((docRef) => {
+      console.log("Chat added with ID: ", docRef.id);
+    })
+    .catch((error) => {
+      console.error("Error adding chat: ", error);
+    });
+   }
 
 
    
