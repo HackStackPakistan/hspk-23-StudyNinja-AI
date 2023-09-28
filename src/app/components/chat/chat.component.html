@@ -32,7 +32,7 @@
       </div>
       <mat-card class="chat-history">
         <div *ngIf="selectedRecipient">
-          <div *ngFor="let message of getChatMessages(selectedRecipient); let i = index" class="chat-message" [ngClass]="{'user-message': message.sender === 'User', 'bot-message': message.sender === 'Bot'}">
+          <div *ngFor="let message of getChatMessages(selectedRecipient); let i = index" class="chat-message" [ngClass]="{'user-message': message.sender === 'User', 'bot-message': message.sender === 'System'}">
             <div class="message-container">
               {{ message.message }}
             </div>

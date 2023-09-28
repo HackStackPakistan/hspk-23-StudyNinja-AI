@@ -18,6 +18,7 @@ export class ChatComponent implements OnInit{
   previousChats: string[] = [];
   data1:ApiResponse[]=[];
   userchatsgot: boolean= false;
+  systemschat: boolean =false;
   
   constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private ApiService:ApiserviceService) {}
 
@@ -37,28 +38,14 @@ export class ChatComponent implements OnInit{
         this.message = '';
         this.addToPreviousChats(result);
         this.addchattodatabase(result)
+        this.apichatstart();
         // this.ApiService.Getresponse("",'choice')
       }
     });
   }
 
   ChatStart(){
-    // this.showSpinner = true;
-    // const durationInMilliseconds = 1000;
 
-    // setTimeout(() => {
-    //   console.log('Timeout callback executed');
-    //   this.showSpinner = false;
-
-    //   console.log('showSpinner set to false');
-    //   // this.cdr.detectChanges();
-
-    //   this.Isspinnerclose = true;
-    //   if (this.Isspinnerclose == true){
-    //     console.log("chat working");
-    //     this.chatboxvisible = true;
-    //   }
-    // }, durationInMilliseconds);
 
    if (!this.userchatsgot){
     this.ApiService.getAllUserschats().subscribe(
@@ -75,19 +62,41 @@ export class ChatComponent implements OnInit{
       }
     );
    }
-    
-    // var apiresponse:any = this.chattest.PostData();
-    // this.data1= apiresponse?.body;
+   
+
+  }
+
+  apichatstart(){
+
+    debugger;
+   this.systemschat = true;
+   this.message = "asdfadfdsf";
+   this.sendMessage()
+
+   
+
+  //  voiceflow api start
 
 
-    // for (let i = 0; i <  apiresponse?.bodydata1.length; i++) {
+  this.ApiService.postdata().subscribe(
+    response => {
+      this.data1= response?.body;
+      var data1length = this.data1?.length;
+ 
+       for (let i = 0; i <  data1length; i++) {
+ 
+        console.log(this.data1[i].payload.message);
+        this.systemschat = true;
+        this.message = this.data1[i].payload.message ;
+        this.sendMessage()
+  
+       console.log('new chat ')
+       console.log(this.chatHistory)
+  
+ 
+       }
+    })
 
-    //   var newMessage = { sender: 'system', message:this.data1[i].payload };
-    //   var newChat:any = { recipient: this.selectedRecipient, messages: [newMessage] };
-    //   this.chatHistory.push(newChat);
-    //  console.log('new chat ')
-    //  console.log(this.chatHistory)
-    // }
 
   }
 
@@ -95,9 +104,18 @@ export class ChatComponent implements OnInit{
 
 
   sendMessage() {
+    debugger;
     const message = this.message.trim();
     if (message && this.selectedRecipient) {
-      const newMessage = { sender: 'User', message };
+      let newMessage:any = [];
+   
+      if(this.systemschat){
+        newMessage = { sender: 'System', message };
+        this.systemschat = false;
+      }
+      else{
+        newMessage = { sender: 'User', message };
+      }
       const currentChat = this.chatHistory.find(chat => chat.recipient === this.selectedRecipient);
 
       if (currentChat) {
@@ -117,8 +135,6 @@ export class ChatComponent implements OnInit{
 
   addToPreviousChats(chatName: string) {
     this.previousChats.push(chatName);
-
-
   }
 
   addchattodatabase(chatName: string){

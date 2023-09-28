@@ -132,6 +132,7 @@ this.buttonpath =  resp;
       }
     );
 
+    console.log(modifiedReq)
     return this.http.request(modifiedReq);
 }
  
