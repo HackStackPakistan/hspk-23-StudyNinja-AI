@@ -37,11 +37,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+    ...canActivate(redirectUnauthorizedToLogin
+  ),
   },
   {
     path: 'chatgpt',
     component: ChattestingComponent,
+    ...canActivate(redirectUnauthorizedToLogin
+  ),
   },
 
   { path: 'chat', component: ChatComponent },
