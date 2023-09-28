@@ -17,9 +17,9 @@ export class ChatComponent implements OnInit{
   message: string = '';
   previousChats: string[] = [];
   data1:ApiResponse[]=[];
-  userchatsvisible: boolean= false;
-
-  constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private firebaseservice:ApiserviceService) {}
+  userchatsgot: boolean= false;
+  
+  constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private ApiService:ApiserviceService) {}
 
   ngOnInit(){
     this.ChatStart()
@@ -37,6 +37,7 @@ export class ChatComponent implements OnInit{
         this.message = '';
         this.addToPreviousChats(result);
         this.addchattodatabase(result)
+        // this.ApiService.Getresponse("",'choice')
       }
     });
   }
@@ -59,12 +60,13 @@ export class ChatComponent implements OnInit{
     //   }
     // }, durationInMilliseconds);
 
-
-    this.firebaseservice.getAllUserschats().subscribe(
+   if (!this.userchatsgot){
+    this.ApiService.getAllUserschats().subscribe(
       (response: any) => {
         for (let i = 0; i < response.length; i++) {
           const chattitle = response[i].ChatTitle;
           this.addToPreviousChats(chattitle);
+          this.userchatsgot = true;
         }
         console.log(response);
       },
@@ -72,6 +74,8 @@ export class ChatComponent implements OnInit{
         console.error('Error fetching chat data:', error);
       }
     );
+   }
+    
     // var apiresponse:any = this.chattest.PostData();
     // this.data1= apiresponse?.body;
 
@@ -119,7 +123,7 @@ export class ChatComponent implements OnInit{
 
   addchattodatabase(chatName: string){
     // add chat in database
-    this.firebaseservice.Adduserchats("123",chatName,"tezst")
+    // this.firebaseservice.Adduserchats("123",chatName,"tezst")
     if (!this.previousChats.includes(chatName)) {
     }
   }
