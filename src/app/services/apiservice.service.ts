@@ -140,66 +140,7 @@ this.buttonpath =  resp;
 
 
 
-  myapi: any = {
-    body: {
-      action: {
-        type: "path-pe1wo39mf"
-      }
-    }
-  };
-   rawData:any;
-  
-   Getresponse(userresponse: string, type: string): Observable<HttpResponse<any>> {
-    try {
-      let rawData: any;
-
-      if (type == 'choice') {
-        rawData = { action: { type: userresponse } };
-        console.log(rawData);
-      } else if (type == 'text') {
-        rawData = { action: { type: 'text', payload: userresponse } };
-        console.log(rawData);
-      }
-
-      const headers = new HttpHeaders({
-        'Host': 'general-runtime.voiceflow.com',
-        'Authorization': this.apikey,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        // Add any other headers you need
-      });
-
-      return this.http.post<any>(
-        `${env.BASE_URL}/`,
-        rawData,
-        { headers, observe: 'response' } // Use observe: 'response' to get the full HttpResponse
-      );
-    } catch (error) {
-      console.error('Error in Getresponse:', error);
-      throw error;
-    }
-  }
-
-   //firebase service
-
-   getAllUserschats() {
-    return this.db.collection('userchathistory').valueChanges();
-   }
-
-   Adduserchats( userid:string,chattitle:string, _ChathistoryID:string){
-    this.db.collection("userchathistory").add({
-      ChatTitle: chattitle,
-      UserID: userid,
-      ChathistoryID: _ChathistoryID
-    })
-    .then((docRef) => {
-      console.log("Chat added with ID: ", docRef.id);
-    })
-    .catch((error) => {
-      console.error("Error adding chat: ", error);
-    });
-   }
-
+ 
 
    
 
