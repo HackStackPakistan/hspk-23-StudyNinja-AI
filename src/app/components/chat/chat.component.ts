@@ -47,22 +47,26 @@ export class ChatComponent implements OnInit{
   ChatStart(){
 
 
-   if (!this.userchatsgot){
-    this.ApiService.getAllUserschats().subscribe(
-      (response: any) => {
-        for (let i = 0; i < response.length; i++) {
-          const chattitle = response[i].ChatTitle;
-          this.addToPreviousChats(chattitle);
-          this.userchatsgot = true;
-        }
-        console.log(response);
-      },
-      (error) => {
-        console.error('Error fetching chat data:', error);
-      }
-    );
-   }
-   
+  //  if (!this.userchatsgot){
+  //   this.ApiService.getAllUserschats().subscribe(
+  //     (response: any) => {  
+  //       for (let i = 0; i < response.length; i++) {
+  //         const chattitle = response[i].ChatTitle;
+  //         this.addToPreviousChats(chattitle);
+  //         this.userchatsgot = true;
+  //       }
+  //       console.log(response);
+  //     },
+  //     (error:any) => {
+  //       console.error('Error fetching chat data:', error);
+  //     }
+  //   );
+  //  }
+        this.ApiService.getAllUserschats().subscribe(
+          (response:any)=>{
+            console.log(response);
+          }
+        )
 
   }
 

@@ -44,6 +44,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { TypewriterchatComponent } from './shared/components/typewriterchat/typewriterchat.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
     TypewriterComponent,
     ChatComponent,
     ChatDialogComponent,
+    TypewriterchatComponent,
   ],
   imports: [
     BrowserModule,

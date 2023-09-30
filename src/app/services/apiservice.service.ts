@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment1 as env } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthenticationService } from './authentication.service';
+
 // import { AngularFirestore } from '@angular/fire/firestore';
 
 
@@ -11,12 +13,15 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ApiserviceService {  
   data: any;
+  Userdetials:any;
 
   
   private apiurl = 'https://general-runtime.voiceflow.com/state/user/12345/interact?logs=off';
 
   constructor(private http:HttpClient
-    ,private db: AngularFirestore
+    ,private db: AngularFirestore,
+    public authService: AuthenticationService,
+
     ) {  }
 
   // apikey:any = 'VF.DM.64c8ee4679fc860007badb7a.Ce4o2LSwhEGKOtCd'; //unimentor api
@@ -184,7 +189,30 @@ this.buttonpath =  resp;
    //new firebase service added
 
    getAllUserschats() {
-    return this.db.collection('userchathistory').valueChanges();
+    this.authService.currentUser$.subscribe(
+      user => {
+        if (user) {
+          this.Userdetials =  user;
+          this.data = this.db.collection('userchathistory', ref => ref.where('UserID', '==',  this.Userdetials.uid))
+          .valueChanges()
+          // .subscribe(userChats => {
+          //  console.log(userChats);
+          // });
+        } else {
+          console.log('User is not authenticated');
+        }
+      },
+      error => {
+        console.error('Error fetching user details:', error);
+      }
+    );
+
+    // console.log(this.authService.currentUser$)
+
+    // var usechats = this.db.collection('userchathistory').valueChanges();
+
+
+    return   this.data;
    }
 
    Adduserchats( userid:string,chattitle:string, _ChathistoryID:string){
@@ -196,7 +224,7 @@ this.buttonpath =  resp;
     .then((docRef) => {
       console.log("Chat added with ID: ", docRef.id);
     })
-    .catch((error) => {
+    .catch((error) => { 
       console.error("Error adding chat: ", error);
     });
    }
