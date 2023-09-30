@@ -58,21 +58,24 @@ export class SignupComponent implements OnInit {
     // private usersService: UsersService,
     private fb: NonNullableFormBuilder
   ) {}
-  
+
   ngOnInit(): void {}
 
   get name(){
     return this.signUpForm.get('name')
   }
-  
+
   get email(){
     return this.signUpForm.get('email')
   }
-  
+
   get password(){
     return this.signUpForm.get('password')
   }
-  
+  hidePassword: boolean = true;
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
   get confirmpassword(){
     return this.signUpForm.get('confirmpassword')
   }
