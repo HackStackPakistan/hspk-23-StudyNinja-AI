@@ -22,6 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatGridListModule} from '@angular/material/grid-list';
 //Forms module
 import { ReactiveFormsModule } from '@angular/forms';
 //Components
@@ -83,6 +86,9 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
     MatSelectModule,
     MatCardModule,
     MatListModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatGridListModule,
   ],
   providers: [HttpClientModule,AngularFireModule,AngularFirestoreModule,],
   bootstrap: [AppComponent]

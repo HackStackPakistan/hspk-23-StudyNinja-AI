@@ -30,7 +30,7 @@ const routes: Routes = [
     ...canActivate(redirectLoggedInToHome),
   },
   {
-    path: 'sign-up',
+    path: 'signup',
     component: SignupComponent,
     ...canActivate(redirectLoggedInToHome),
   },
