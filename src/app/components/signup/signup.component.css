@@ -1,0 +1,89 @@
+/* Add styles for the signup component */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.password-toggle {
+  margin-top: 8px;
+}
+
+.custom-button {
+  width: 250px;
+  height: 50px;
+  background-color: green;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.button-text {
+  transition: opacity 0.2s;
+}
+
+.button-text.ng-hide-add,
+.button-text.ng-hide-remove {
+  display: inline-block !important;
+  opacity: 1 !important;
+}
+
+.button-text.ng-hide {
+  opacity: 0;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-button:hover {
+  background-color: white;
+  color: green;
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* Add spacing between icon and text */
+.login-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.green{
+  color: green;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 100%; 
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.signup-container {
+  grid-column: 1; 
+}
+
+
+.login-container {
+  grid-column: 1;
+}
+.right-sidebar {
+  grid-column: 2;
+  
+}
+
