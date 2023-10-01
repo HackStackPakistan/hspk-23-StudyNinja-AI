@@ -36,6 +36,17 @@ export class ChatComponent implements OnInit{
     });
   }
 
+
+  isTyping: boolean = false;
+  isTypingnew: boolean = false;
+  isTypingcheck: any;
+  
+
+  isTypingg(item: any): boolean {
+    return true; 
+
+  }
+
   openChatDialog() {
     const dialogRef = this.dialog.open(ChatDialogComponent, {
       width: '400px',

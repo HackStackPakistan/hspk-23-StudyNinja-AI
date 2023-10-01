@@ -123,6 +123,7 @@ mat-form-field {
   width: 100%;
   padding: 16px;
   border-radius: 8px;
+  overflow: auto;
 }
 
 .heading{

@@ -138,10 +138,7 @@ export class ChattestingComponent {
   
 
   isTypingg(item: any): boolean {
-    // Implement your logic to determine if typing is required based on the item
-    // For example, you can check the content type or any other condition
-    // Return true if the API response indicates that typing is required, otherwise return false
-    return true; // Assuming 'status' is a property in the API response indicating typing status
+    return true; 
 
   }
 
