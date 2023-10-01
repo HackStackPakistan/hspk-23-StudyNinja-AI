@@ -48,7 +48,11 @@ export class ChatComponent implements OnInit{
         this.selectedRecipient = result;
         this.message = '';
         this.addToPreviousChats(result);
-        this.apigetresponse(result,"choice");
+
+        const message = result.trim();
+        let newMessage:any = [];
+        newMessage = { sender: 'System', message };
+        this.apigetresponse(newMessage,"choice");
         // this.addchattodatabase(result)
         // this.ApiService.Getresponse("",result)
       }
@@ -113,9 +117,10 @@ export class ChatComponent implements OnInit{
   }
 
   apigetresponse(responseData?:any,responsetype?:any){
-    console.log("button response");
+    console.log("testing user response");
+    console.log(responseData.message,responsetype);
     // this.Getresponse(Buttonpath.request.type,"choice");
-      this.ApiService.Getresponse(responseData,responsetype).pipe(
+      this.ApiService.Getresponse(responseData.message,responsetype).pipe(
         map( (response:any) =>{
         console.log("getting data");
         var data2 = response?.body;
