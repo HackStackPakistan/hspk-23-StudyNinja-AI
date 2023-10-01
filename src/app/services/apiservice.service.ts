@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of, switchMap } from 'rxjs';
 import { environment1 as env } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthenticationService } from './authentication.service';
@@ -188,33 +188,28 @@ this.buttonpath =  resp;
 
    //new firebase service added
 
-   getAllUserschats() {
-    this.authService.currentUser$.subscribe(
-      user => {
+   getAllUserschats(): Observable<any[]> {
+    return this.authService.currentUser$.pipe(
+      switchMap((user) => {
         if (user) {
-          this.Userdetials =  user;
-          this.data = this.db.collection('userchathistory', ref => ref.where('UserID', '==',  this.Userdetials.uid))
-          .valueChanges()
-          // .subscribe(userChats => {
-          //  console.log(userChats);
-          // });
+          this.Userdetials = user;
+          return this.db
+            .collection('userchathistory', (ref) =>
+              ref.where('UserID', '==', this.Userdetials.uid)
+            )
+            .valueChanges();
         } else {
           console.log('User is not authenticated');
+          return of([]); 
         }
-      },
-      error => {
+      }),
+      catchError((error) => {
         console.error('Error fetching user details:', error);
-      }
+        return of([]); 
+      })
     );
-
-    // console.log(this.authService.currentUser$)
-
-    // var usechats = this.db.collection('userchathistory').valueChanges();
-
-
-    return   this.data;
-   }
-
+  }
+  
    Adduserchats( userid:string,chattitle:string, _ChathistoryID:string){
     this.db.collection("userchathistory").add({
       ChatTitle: chattitle,
