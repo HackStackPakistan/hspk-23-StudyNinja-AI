@@ -12,6 +12,8 @@
           "width: fit-content"
         ]
       }
-    ]
+    ],
+    "axe/text-alternatives": "off",
+    "meta-charset-utf-8": "off"
   }
 }

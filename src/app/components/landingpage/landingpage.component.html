@@ -1,6 +1,6 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
-    <mat-card class="cardcss">
+<mat-grid-list cols="2" rowHeight="2:1" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center">
+  <mat-grid-tile fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.lt-md="100%">
+    <mat-card class="p-5">
       <mat-card-content>
         <h1><span class="green"><b>Uni-Mentor Your AI Guide to Discovering the Perfect University</b></span></h1>
         <h4>Unlock Your Educational Journey with Uni-Mentor: Your Personalized University Advisor</h4>
@@ -10,90 +10,87 @@
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="cardcss">
+  <mat-grid-tile fxFlex="100%" fxFlex.gt-sm="50%" fxFlex.lt-md="100%">
+    <mat-card class="">
       <mat-card-content>
-        <h4>image???</h4>
+<!-- image -->
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+
 <mat-card>
   <mat-card-content>
-    <div class="style" >
+    <div class="style">
       <h2>Why Choose Uni-Mentor for Your University Quest?</h2>
     </div>
     <mat-grid-list cols="1" rowHeight="30px">
-      <mat-grid-tile>Uni-Mentor offers comprehensive information about universities worldwide.
-       </mat-grid-tile>
-      <mat-grid-tile>Provides personalized university recommendations based on your profile.
-        </mat-grid-tile>
-      <mat-grid-tile>Uni-Mentor saves time with efficient information gathering.
-       </mat-grid-tile>
-      <mat-grid-tile> It keeps you updated with real-time university data.</mat-grid-tile>
+      <mat-grid-tile>Uni-Mentor offers comprehensive information about universities worldwide.</mat-grid-tile>
+      <mat-grid-tile>Provides personalized university recommendations based on your profile.</mat-grid-tile>
+      <mat-grid-tile>Uni-Mentor saves time with efficient information gathering.</mat-grid-tile>
+      <mat-grid-tile>It keeps you updated with real-time university data.</mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
 </mat-card>
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
-    <mat-card class="cardcss">
-      <mat-card-content>
-        <h1><span class="green"><b>Unveil the Potential of Uni-Mentor</b></span></h1>
-        <p>Witness Its Capabilities in Action Through Our Demo Video. See How It Streamlines Your University Journey, Offering Instant Answers to Your Queries. Step into the Future of Learning Today!</p>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="cardcss">
+
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center">
+      <h1><span class="green"><b>Unveil the Potential of Uni-Mentor</b></span></h1>
+      <p>Witness Its Capabilities in Action Through Our Demo Video. See How It Streamlines Your University Journey, Offering Instant Answers to Your Queries. Step into the Future of Learning Today!</p>
+    </div>
+    <mat-card class="">
       <mat-card-content>
         <h4>Video???</h4>
       </mat-card-content>
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-<mat-grid-list cols="3" rowHeight="2:1">
-  <mat-grid-tile>
-    <mat-card class="cardcss">
-      <mat-card-content>
-        <h2>Uni-Mentor</h2>
-        <p>
-          Imagine having real-time answers to your questions about universities, available at your fingertips. Uni-Mentor offers instant guidance and support, making your university exploration smoother and more efficient than ever before.
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="cardcss">
-      <mat-card-content>
-        <h2>Contact</h2>
-        <p>Email: example@example.com</p>
-        <p>Support Number: +1-123-456-7890</p>
-        <p>Website: <a href="https://www.example.com">www.example.com</a></p>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card class="cardcss">
-      <mat-card-content>
-        <h2>Social</h2>
-        <button mat-icon-button>
-          <mat-icon>facebook</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>linkedin</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>twitter</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>discord</mat-icon>
-        </button>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+  </mat-card-content>
+</mat-card>
 
-<div class="divider"></div>
-
-<p class="copyright">© Copyright 2023 Uni-Mentor Design and Developed by StudyNinja</p>
-
+<mat-card>
+  <mat-card-content>
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile>
+        <mat-card class="">
+          <mat-card-content>
+            <h2>Uni-Mentor</h2>
+            <p>Imagine having real-time answers to your questions about universities, available at your fingertips. Uni-Mentor offers instant guidance and support, making your university exploration smoother and more efficient than ever before.</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="">
+          <mat-card-content>
+            <h2>Contact</h2>
+            <p>Email: example@example.com</p>
+            <p>Support Number: +1-123-456-7890</p>
+            <p>Website: <a href="https://www.example.com">www.example.com</a></p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="">
+          <mat-card-content>
+            <h2>Social</h2>
+            <button mat-icon-button>
+              <mat-icon>facebook</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>instagram</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>twitter</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>discord</mat-icon>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <hr>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <p>© 2023 Uni-Mentor Design and Developed by StudyNinja</p>
+    </div>
+  </mat-card-content>
+</mat-card>
