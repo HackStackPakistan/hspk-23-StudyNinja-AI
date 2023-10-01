@@ -1,48 +1,41 @@
 <mat-toolbar class="green-bg">
-  Welcome to UniMentor
+  <h1><span><b>Uni-Mentor</b></span></h1>
+
   <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
-    <!-- <button mat-button (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
-    </button> -->
     <button mat-button [matMenuTriggerFor]="userMenu">
-      <!-- <img
-        width="30"
-        height="30"
-        class="profile-image-toolbar"
-        src="/src/assets/"
-      />
-        [src]="user.photoURL ?? 'assets/images/image-placeholder.png'"
-      /> -->
       {{ user.displayName }}
       <mat-icon>expand_more</mat-icon>
     </button>
-
   </ng-container>
   <ng-template #loginButton>
-    <button mat-button routerLink="login">
-      <mat-icon>login</mat-icon>
-      Login
-    </button>
+    <div class="login-buttons">
+      <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        <b>Home</b>
+      </button>
+      <button mat-raised-button routerLink="login">
+        <mat-icon>login</mat-icon>
+        <b>Sign In</b>
+      </button>
+      <button mat-raised-button routerLink="signup">
+        <mat-icon>person_add</mat-icon>
+        <b>Sign Up</b>
+      </button>
+    </div>
   </ng-template>
 </mat-toolbar>
-
-<!-- <mat-toolbar color="primary">
-  UniMentor SignUp
-  <button mat-button routerLink="login">
-    <mat-icon>login</mat-icon>
-    Login
-  </button>
-  <button mat-button routerLink="chat">
-    chat
-  </button>
-</mat-toolbar> -->
-
 <div class="content">
   <router-outlet></router-outlet>
 </div>
-
 <mat-menu #userMenu="matMenu">
+  <button mat-menu-item routerLink="/chat">
+    <mat-icon>message</mat-icon>
+    Chat
+  </button>
+  <button mat-menu-item routerLink="/">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
   <button mat-menu-item routerLink="/profile">
     <mat-icon>account_circle</mat-icon>
     Profile

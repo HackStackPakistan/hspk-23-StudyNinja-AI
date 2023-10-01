@@ -14,6 +14,18 @@ mat-toolbar {
     background-color: green;
     color: white;
   }
+  .login-buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-buttons button {
+    margin-left: 10px;
+  }
+  .gap{
+    margin-left:10px;
+  }
 ::ng-deep ::-webkit-scrollbar {
   width: 8px;
   background-color: transparent;

@@ -5,17 +5,9 @@
     <br>
     <mat-spinner *ngIf="showSpinner"></mat-spinner>
     <div>
-      <!--  {{ data }} Display the 'data' variable value -->
-  
-  
-  
-      <!-- 
-      <div *ngFor="let button of Buttons" class="message received">
-        <p>{{ button.name }}</p>
-      </div> -->
     </div>
   </div>
-  
+
     <div  #chatboxContainer  class="chatbox chat-container">
       <br>
       <br>
@@ -30,9 +22,9 @@
                   <!-- AI text -->
                   <!-- <div *ngIf="item?.contenttype == 'text'" class="message received">
                     <p>{{ item.payload?.message}}</p>
-                  </div> -->  
+                  </div> -->
                   <app-typewriter *ngIf="item.payload?.message?.length >  1" class="message received" [text]="item.payload?.message" [isTyping]="isTypingg(true)"></app-typewriter>
-                 
+
                   <div   class="buttondiv">
                     <!-- AI choice -->
                     <div  *ngIf="item.contenttype == 'choice'" class="buttondiv">
@@ -50,14 +42,14 @@
                   <button   color="primary" mat-raised-button >
                   {{buttonss.name}}
                   </button>
-                  
+
                 </div>
               </div> -->
             </div>
             <!-- USER reponse -->
             <div class="">
               <div *ngIf="item.type === 'user'">
-                <!-- <div *ngIf="buttonname != null" class="message sent col"> 
+                <!-- <div *ngIf="buttonname != null" class="message sent col">
                         <p>{{ buttonname }}</p>
                       </div> -->
                 <div *ngIf="item.contenttype === 'text'" class="message sent col">
@@ -75,5 +67,5 @@
             <input type="text" placeholder="Type your message..." [(ngModel)]="userresponse">
             <button (click)="UserResponse(userresponse)">Send</button>
           </div>
-        </div>  
+        </div>
       </div>
