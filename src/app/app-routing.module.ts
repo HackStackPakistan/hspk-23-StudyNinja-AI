@@ -47,7 +47,11 @@ const routes: Routes = [
   ),
   },
 
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat',
+   component: ChatComponent,
+   ...canActivate(redirectUnauthorizedToLogin
+    ),
+   },
   { path: '', redirectTo: '/chat', pathMatch: 'full' },
 ];
 
