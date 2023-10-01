@@ -11,11 +11,19 @@
 
     <div class="previous-chats">
       <div *ngFor="let chat of previousChats" class="previous-chat">
-        <button mat-button class="chat-button text-white" (click)="loadChat(chat)">
-          <mat-icon>chat</mat-icon> {{ chat }}
-        </button>
+        <div class="chat-container">
+          <button mat-button class="chat-button text-white" (click)="loadChat(chat)">
+            <mat-icon>chat</mat-icon>
+            {{ chat }}
+          </button>
+          <mat-icon  (click)="editChat(chat)">edit</mat-icon>
+          <mat-icon (click)="deleteChat(chat)">delete</mat-icon>
+          <!-- <mat-icon class="edit-icon" *ngIf="showEditIcon[chat]" (click)="editChat(chat)">edit</mat-icon>
+          <mat-icon class="delete-icon" *ngIf="showDeleteIcon[chat]" (click)="deleteChat(chat)">delete</mat-icon> -->
+        </div>
       </div>
     </div>
+    
   </mat-drawer>
 
   <button *ngIf="!drawer.opened" type="button" mat-icon-button (click)="drawer.toggle()">

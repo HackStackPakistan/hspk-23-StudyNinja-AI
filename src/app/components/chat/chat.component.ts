@@ -250,4 +250,22 @@ export class ChatComponent implements OnInit{
     console.log("sdfsd")
   }
 
+  showEditIcon: { [key: string]: boolean } = {};
+  showDeleteIcon: { [key: string]: boolean } = {};
+
+  toggleIcons(chat: string) {
+    this.showEditIcon = {};
+    this.showDeleteIcon = {};
+    this.showEditIcon[chat] = !this.showEditIcon[chat];
+    this.showDeleteIcon[chat] = !this.showDeleteIcon[chat];
+  }
+
+  editChat(chat: string) {
+    alert(`Editing chat: ${chat}`);
+  }
+
+  deleteChat(chat: string) {
+    alert(`Deleting chat: ${chat}`);
+  }
+
 }

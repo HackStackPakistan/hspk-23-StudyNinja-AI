@@ -40,6 +40,16 @@
   margin-bottom: 8px;
 }
 
+.chat-container {
+  display: flex;
+  align-items: center;
+}
+
+.edit-icon,
+.delete-icon {
+  margin-left: 8px;
+}
+
 .chat-history {
   flex-grow: 1;
   display: flex;
