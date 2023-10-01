@@ -25,7 +25,8 @@ export class ApiserviceService {
     ) {  }
 
   // apikey:any = 'VF.DM.64c8ee4679fc860007badb7a.Ce4o2LSwhEGKOtCd'; //unimentor api
-  apikey:any = 'VF.DM.65149bb4b4bc5400060fa2e1.D8lxjqqm2XDIp24d'; //unimentor api 2.0
+  // apikey:any = 'VF.DM.65149bb4b4bc5400060fa2e1.D8lxjqqm2XDIp24d'; //unimentor api 2.0
+  apikey:any = 'VF.DM.6519b6957db1bb00087ee25e.ACM6RQKsEyoOtlPx'; //unimentor api 3.0
   // apikey:any = 'apikey';
   userinput:any = 'hi i have some questoins';
   buttonpath:string= "";
@@ -158,7 +159,7 @@ this.buttonpath =  resp;
    Getresponse(userresponse: string, type: string): Observable<HttpResponse<any>> {
     try {
       let rawData: any;
-
+      debugger;
       if (type == 'choice') {
         rawData = { action: { type: userresponse } };
         console.log(rawData);
