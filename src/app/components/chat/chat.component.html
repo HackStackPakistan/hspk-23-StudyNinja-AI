@@ -1,7 +1,7 @@
 <mat-drawer-container  class="example-container">
-  <mat-drawer style="background-color: green;" #drawer class="example-sidenav " mode="side" opened="true">
+  <mat-drawer [mode]="isResponsiveMode ? 'over' : 'side'" [opened]="!isResponsiveMode" style="background-color: green;" #drawer class="example-sidenav">
     <div class="button-container">
-      <button class="whitebutton" mat-stroked-button (click)="openChatDialog()" >
+      <button class="whitebutton" mat-stroked-button (click)="openChatDialog()">
         <mat-icon>add</mat-icon> New Chat
       </button>
       <button type="button" class="whitebutton" mat-stroked-button (click)="drawer.toggle()">
@@ -16,8 +16,8 @@
         </button>
       </div>
     </div>
-
   </mat-drawer>
+
   <button *ngIf="!drawer.opened" type="button" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>

@@ -5,7 +5,7 @@ import { ApiserviceService } from 'src/app/services/apiservice.service'
 import { ApiResponse, ChattestingComponent } from '../chattesting/chattesting.component';
 import { map } from 'rxjs';
 import { endBefore } from 'firebase/firestore';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
@@ -22,12 +22,18 @@ export class ChatComponent implements OnInit{
   modaldata:any[]=[];
   userchatsgot: boolean= false;
   systemschat: boolean =false;
-  
-  constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private ApiService:ApiserviceService) {}
 
+  constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private ApiService:ApiserviceService,private breakpointObserver: BreakpointObserver) {}
+  isResponsiveMode: boolean = false; // Initialize as false
   ngOnInit(){
     this.Loadpreviouschat()
     this.apichatstart();
+    this.breakpointObserver.observe([
+      Breakpoints.Small,
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      this.isResponsiveMode = result.matches;
+    });
   }
 
   openChatDialog() {
@@ -54,7 +60,7 @@ export class ChatComponent implements OnInit{
 
    if (!this.userchatsgot){
     this.ApiService.getAllUserschats().subscribe(
-      (response: any) => {  
+      (response: any) => {
         for (let i = 0; i < response.length; i++) {
           const chattitle = response[i].ChatTitle;
           this.addToPreviousChats(chattitle);
@@ -76,16 +82,16 @@ export class ChatComponent implements OnInit{
    this.message = "asdfadfdsf";
    this.sendMessage()
 
-   
+
 
   //  voiceflow api start
   this.ApiService.postdata().subscribe(
     response => {
       this.data1= response?.body;
       var data1length = this.data1?.length;
- 
+
        for (let i = 0; i <  data1length; i++) {
- 
+
         console.log(this.data1[i].payload.message);
         this.systemschat = true;
         this.message = this.data1[i].payload.message ;
@@ -98,8 +104,8 @@ export class ChatComponent implements OnInit{
         if (data1length > 1) {
           this.modaldata=  this.data1[1].payload.buttons;
         }
-  
- 
+
+
        }
     })
 
@@ -115,13 +121,13 @@ export class ChatComponent implements OnInit{
         var data2 = response?.body;
         console.log(data2)
 
-        
+
         for (let i = 0; i < data2?.length; i++) {
           if(data2[i].type == 'text'){
             this.message = data2[i].payload.message ;
             this.systemschat = true;
           }
-          
+
         }
 
         })
@@ -133,13 +139,13 @@ export class ChatComponent implements OnInit{
           const message = this.message.trim();
           if (message && this.selectedRecipient) {
             let newMessage:any = [];
-         
+
             if(this.systemschat){
               newMessage = { sender: 'System', message };
               this.systemschat = false;
             }
             const currentChat = this.chatHistory.find(chat => chat.recipient === this.selectedRecipient);
-      
+
             if (currentChat) {
               currentChat.messages.push(newMessage);
             }
@@ -163,7 +169,7 @@ export class ChatComponent implements OnInit{
     const message = this.message.trim();
     if (message && this.selectedRecipient) {
       let newMessage:any = [];
-   
+
       if(this.systemschat){
         newMessage = { sender: 'System', message };
         this.systemschat = false;
