@@ -1,17 +1,17 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+<mat-drawer-container  class="example-container">
+  <mat-drawer style="background-color: green;" #drawer class="example-sidenav " mode="side" opened="true">
     <div class="button-container">
-      <button mat-stroked-button (click)="openChatDialog()" >
+      <button class="whitebutton" mat-stroked-button (click)="openChatDialog()" >
         <mat-icon>add</mat-icon> New Chat
       </button>
-      <button type="button" mat-stroked-button (click)="drawer.toggle()">
+      <button type="button" class="whitebutton" mat-stroked-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
 
     <div class="previous-chats">
       <div *ngFor="let chat of previousChats" class="previous-chat">
-        <button mat-button class="chat-button" (click)="loadChat(chat)">
+        <button mat-button class="chat-button text-white" (click)="loadChat(chat)">
           <mat-icon>chat</mat-icon> {{ chat }}
         </button>
       </div>

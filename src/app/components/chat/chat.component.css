@@ -1,5 +1,8 @@
 /* Add these styles to your CSS */
 
+.bg-greenn{
+  background-color: green;
+}
 .example-container {
   display: flex;
   flex-direction: column;
@@ -92,6 +95,7 @@
 .chat-button {
   width: 100%;
   height: 40px;
+  background-color: white;
 }
 mat-form-field {
   flex: 1;
@@ -129,4 +133,8 @@ mat-form-field {
 .button-container {
   display: flex;
   gap: 16px;
+}
+
+.whitebutton{
+  background-color: white;
 }
