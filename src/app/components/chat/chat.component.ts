@@ -4,6 +4,7 @@ import { ChatDialogComponent } from '../chat-dialog/chat-dialog.component';
 import { ApiserviceService } from 'src/app/services/apiservice.service'
 import { ApiResponse, ChattestingComponent } from '../chattesting/chattesting.component';
 import { map } from 'rxjs';
+import { endBefore } from 'firebase/firestore';
 
 
 
@@ -41,7 +42,7 @@ export class ChatComponent implements OnInit{
         this.selectedRecipient = result;
         this.message = '';
         this.addToPreviousChats(result);
-        this.apigetresponse(result);
+        this.apigetresponse(result,"choice");
         // this.addchattodatabase(result)
         // this.ApiService.Getresponse("",result)
       }
@@ -105,29 +106,60 @@ export class ChatComponent implements OnInit{
 
   }
 
-  apigetresponse(Buttonpath:any){
+  apigetresponse(responseData?:any,responsetype?:any){
     console.log("button response");
     // this.Getresponse(Buttonpath.request.type,"choice");
-      this.ApiService.Getresponse(Buttonpath,"choice").pipe(
+      this.ApiService.Getresponse(responseData,responsetype).pipe(
         map( (response:any) =>{
         console.log("getting data");
-                var data2 = response?.body;
-                console.log(data2)
-        for (let i = 0; i < data2?.length; i++) {
+        var data2 = response?.body;
+        console.log(data2)
 
+        
+        for (let i = 0; i < data2?.length; i++) {
           if(data2[i].type == 'text'){
             this.message = data2[i].payload.message ;
-            this.sendMessage()
+            this.systemschat = true;
           }
+          
         }
 
         })
+      )
+      .subscribe(
+        response =>{
+
+          debugger;
+          const message = this.message.trim();
+          if (message && this.selectedRecipient) {
+            let newMessage:any = [];
+         
+            if(this.systemschat){
+              newMessage = { sender: 'System', message };
+              this.systemschat = false;
+            }
+            const currentChat = this.chatHistory.find(chat => chat.recipient === this.selectedRecipient);
+      
+            if (currentChat) {
+              currentChat.messages.push(newMessage);
+            }
+            else {
+              const newChat = { recipient: this.selectedRecipient, messages: [newMessage] };
+              this.chatHistory.push(newChat);
+            }
+          }
+          this.message = '';
+
+        }
       );
+
+
   }
 
 
 
   sendMessage() {
+    debugger;
     const message = this.message.trim();
     if (message && this.selectedRecipient) {
       let newMessage:any = [];
@@ -142,7 +174,9 @@ export class ChatComponent implements OnInit{
       const currentChat = this.chatHistory.find(chat => chat.recipient === this.selectedRecipient);
 
       if (currentChat) {
+        debugger;
         currentChat.messages.push(newMessage);
+        this.apigetresponse(newMessage, "text");
       } else {
         const newChat = { recipient: this.selectedRecipient, messages: [newMessage] };
         this.chatHistory.push(newChat);
