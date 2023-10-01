@@ -188,7 +188,7 @@ Getdata() {
 
 
       if (response?.body?.length > 1) {
-        this.Buttons =  this.data1[1].payload.buttons; // Extract 'buttons' from the second item in the array
+        this.Buttons =  this.data1[1].payload.buttons; 
         // console.log(response[1].payload.buttons);
       }
 

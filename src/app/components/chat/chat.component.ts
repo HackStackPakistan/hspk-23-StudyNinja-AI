@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChatDialogComponent } from '../chat-dialog/chat-dialog.component';
 import { ApiserviceService } from 'src/app/services/apiservice.service'
 import { ApiResponse, ChattestingComponent } from '../chattesting/chattesting.component';
+import { map } from 'rxjs';
 
 
 
@@ -16,19 +17,22 @@ export class ChatComponent implements OnInit{
   chatHistory: { recipient: string; messages: { sender: string; message: string }[] }[] = [];
   message: string = '';
   previousChats: string[] = [];
-  data1:ApiResponse[]=[];
+  data1:any[]=[];
+  modaldata:any[]=[];
   userchatsgot: boolean= false;
   systemschat: boolean =false;
   
   constructor(private dialog: MatDialog,private chattest:ChattestingComponent,private ApiService:ApiserviceService) {}
 
   ngOnInit(){
-    this.ChatStart()
+    this.Loadpreviouschat()
+    this.apichatstart();
   }
 
   openChatDialog() {
     const dialogRef = this.dialog.open(ChatDialogComponent, {
       width: '400px',
+      data: this.modaldata
     });
 
     //after modal close
@@ -37,42 +41,36 @@ export class ChatComponent implements OnInit{
         this.selectedRecipient = result;
         this.message = '';
         this.addToPreviousChats(result);
-        this.addchattodatabase(result)
-        this.apichatstart();
-        // this.ApiService.Getresponse("",'choice')
+        this.apigetresponse(result);
+        // this.addchattodatabase(result)
+        // this.ApiService.Getresponse("",result)
       }
     });
   }
 
-  ChatStart(){
+  Loadpreviouschat(){
 
 
-  //  if (!this.userchatsgot){
-  //   this.ApiService.getAllUserschats().subscribe(
-  //     (response: any) => {  
-  //       for (let i = 0; i < response.length; i++) {
-  //         const chattitle = response[i].ChatTitle;
-  //         this.addToPreviousChats(chattitle);
-  //         this.userchatsgot = true;
-  //       }
-  //       console.log(response);
-  //     },
-  //     (error:any) => {
-  //       console.error('Error fetching chat data:', error);
-  //     }
-  //   );
-  //  }
-        this.ApiService.getAllUserschats().subscribe(
-          (response:any)=>{
-            console.log(response);
-          }
-        )
-
+   if (!this.userchatsgot){
+    this.ApiService.getAllUserschats().subscribe(
+      (response: any) => {  
+        for (let i = 0; i < response.length; i++) {
+          const chattitle = response[i].ChatTitle;
+          this.addToPreviousChats(chattitle);
+          this.userchatsgot = true;
+        }
+        console.log(response);
+      },
+      (error:any) => {
+        console.error('Error fetching chat data:', error);
+      }
+    );
+   }
   }
 
+  //api conversation start
   apichatstart(){
 
-    debugger;
    this.systemschat = true;
    this.message = "asdfadfdsf";
    this.sendMessage()
@@ -80,8 +78,6 @@ export class ChatComponent implements OnInit{
    
 
   //  voiceflow api start
-
-
   this.ApiService.postdata().subscribe(
     response => {
       this.data1= response?.body;
@@ -93,9 +89,14 @@ export class ChatComponent implements OnInit{
         this.systemschat = true;
         this.message = this.data1[i].payload.message ;
         this.sendMessage()
-  
-       console.log('new chat ')
-       console.log(this.chatHistory)
+
+        if(this.data1[i].contenttype == 'choice'){
+        this.data1 = this.data1[1].payload.buttons;
+        console.log(this.data1);
+        }
+        if (data1length > 1) {
+          this.modaldata=  this.data1[1].payload.buttons;
+        }
   
  
        }
@@ -104,11 +105,29 @@ export class ChatComponent implements OnInit{
 
   }
 
+  apigetresponse(Buttonpath:any){
+    console.log("button response");
+    // this.Getresponse(Buttonpath.request.type,"choice");
+      this.ApiService.Getresponse(Buttonpath,"choice").pipe(
+        map( (response:any) =>{
+        console.log("getting data");
+                var data2 = response?.body;
+                console.log(data2)
+        for (let i = 0; i < data2?.length; i++) {
+
+          if(data2[i].type == 'text'){
+            this.message = data2[i].payload.message ;
+            this.sendMessage()
+          }
+        }
+
+        })
+      );
+  }
 
 
 
   sendMessage() {
-    debugger;
     const message = this.message.trim();
     if (message && this.selectedRecipient) {
       let newMessage:any = [];

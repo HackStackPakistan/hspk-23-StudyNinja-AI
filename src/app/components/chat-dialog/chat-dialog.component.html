@@ -2,15 +2,15 @@
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Select an option</mat-label>
-    <mat-select [(ngModel)]="selectedOption">
-      <mat-option>None</mat-option>
-      <mat-option value="Sir Syed University">Sir Syed University</mat-option>
-      <mat-option value="DHA Suffa University">DHA Suffa University</mat-option>
-      <mat-option value="Ned University">Ned University</mat-option>
+    <mat-select [(ngModel)]="selectedOption" >
+      <mat-option>---Select University---</mat-option>
+      <mat-option  *ngFor="let button of Buttons" value="{{ button?.request?.type }}">
+        {{button.name}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="selectUser()">Select</button>
+  <button mat-button (click)="StartChat()">Start</button>
   <button mat-button (click)="closeDialog()">Cancel</button>
 </mat-dialog-actions>
