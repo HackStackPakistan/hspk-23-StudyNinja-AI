@@ -44,13 +44,12 @@
             <div *ngIf="message.sender === 'System'">
               <app-typewriter *ngIf="message.message.length >  1" class="message-container" [text]="message.message" [isTyping]="isTypingg(true)"></app-typewriter>
             </div>
-            <div class="message-container">
+            <div *ngIf="message.sender === 'User'" class="message-container">
               {{ message.message }}
             </div>
             <hr/>
             <div class="message-actions" *ngIf="message.sender === 'User'">
               <button mat-icon-button class="edit-button" (click)="editMessage(i)">
-                <mat-icon>edit</mat-icon>
               </button>
             </div>
           </div>

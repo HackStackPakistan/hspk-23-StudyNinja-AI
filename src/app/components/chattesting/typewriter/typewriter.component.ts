@@ -32,7 +32,7 @@ export class TypewriterComponent {
           clearInterval(interval);
         }
         i++;
-      }, 35);
+      }, 15);
     }
   }
   
